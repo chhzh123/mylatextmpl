@@ -1,0 +1,368 @@
+% !TeX encoding = UTF-8
+
+%% chhzh123's personal macro package v0.1 2019/01/17
+%
+%% mypackage.sty
+%
+%% Copyright 2018--2019 chhzh123
+
+% Identification
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mypackage}[2019/01/17]
+
+% Option declarations
+\DeclareOption{english}{\def\chhzhdef@english{\relax}}
+\DeclareOption{slide}{\def\chhzhdef@slide{\relax}}
+\DeclareOption{listings}{\def\chhzhdef@listings{\relax}}
+\DeclareOption{cplusplus}{\def\chhzhdef@cplusplus{\relax}}
+\DeclareOption{bigstrut}{\def\chhzhdef@bigstrut{\relax}}
+
+% Process options
+\ProcessOptions\relax
+
+% Basic packages
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb} %\because\therefore
+\RequirePackage{amsxtra}
+\RequirePackage{mathtools}
+\RequirePackage{etoolbox}
+% \RequirePackage{ntheorem}
+
+% Figures
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+\RequirePackage{pgfplots}
+
+% Environments
+\ifdefined\chhzhdef@listings%
+\RequirePackage{listings}%
+\lstset{%
+	basicstyle=\ttfamily,%
+	keywordstyle=\ttfamily\color{blue!75!black},%
+	commentstyle=\ttfamily\color{green!75!black},%
+	stringstyle=\ttfamily\color{red!75!black},
+	flexiblecolumns%
+}%
+\fi
+\ifdefined\chhzhdef@cplusplus%
+\RequirePackage{listings}%
+\lstset{%
+	language=c++,%
+	basicstyle=\small\ttfamily,%
+	keywordstyle=\ttfamily\color{blue!75!black},%
+	commentstyle=\ttfamily\color{green!75!black},%
+	stringstyle=\ttfamily\color{red!75!black},
+	flexiblecolumns,%
+	escapechar=`
+}%
+\fi
+% \lstset{
+% 	language=Verilog,
+% 	basicstyle=\tiny\ttfamily,
+% 	escapechar={`,\&},
+% 	showstringspaces=false,
+% 	numbers=left,
+% 	numberstyle=\bahao\ttfamily,
+% 	numbersep=9pt,
+% 	tabsize=4,
+% 	breaklines=true,
+% 	showtabs=false,
+% 	frame=leftline,
+% 	literate={\$}{{\textcolor{blue}{\$}}}1
+% }
+
+\ifdefined\chhzhdef@bigstrut
+\RequirePackage{bigstrut}
+\fi
+
+% Miscellaneous packages
+% \RequirePackage{gensymb}
+\RequirePackage{extarrows}
+\RequirePackage{bm}
+\RequirePackage{yhmath} % wideparen, widehat
+\RequirePackage{esint} % underset, oiint
+
+% Sets
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\rn}{\mathbb{R}^n}
+\newcommand{\qq}{\mathbb{Q}}
+% be careful!
+\newcommand{\mC}{\mathbf{C}}
+\newcommand{\mH}{\mathbf{H}}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mD}{\mathcal{D}}
+
+% Vectors and Matries
+\newcommand{\va}{\mathbf{a}}
+\newcommand{\vb}{\mathbf{b}}
+\newcommand{\vc}{\mathbf{c}}
+\newcommand{\vd}{\mathbf{d}}
+\newcommand{\ve}{\mathbf{e}}
+\newcommand{\vf}{\mathbf{f}}
+\newcommand{\vg}{\mathbf{g}}
+\newcommand{\vh}{\mathbf{h}}
+\newcommand{\vi}{\mathbf{i}}
+\newcommand{\vj}{\mathbf{j}}
+\newcommand{\vk}{\mathbf{k}}
+\newcommand{\vl}{\mathbf{l}}
+\newcommand{\vm}{\mathbf{m}}
+\newcommand{\vn}{\mathbf{n}}
+\newcommand{\vo}{\mathbf{o}}
+\newcommand{\vp}{\mathbf{p}}
+\newcommand{\vq}{\mathbf{q}}
+\newcommand{\vr}{\mathbf{r}}
+\newcommand{\vs}{\mathbf{s}}
+\newcommand{\vt}{\mathbf{t}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vw}{\mathbf{w}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vy}{\mathbf{y}}
+\newcommand{\vz}{\mathbf{z}}
+\newcommand{\vA}{\mathbf{A}}
+\newcommand{\vB}{\mathbf{B}}
+\newcommand{\vC}{\mathbf{C}}
+\newcommand{\vD}{\mathbf{D}}
+\newcommand{\vE}{\mathbf{E}}
+\newcommand{\vF}{\mathbf{F}}
+\newcommand{\vG}{\mathbf{G}}
+\newcommand{\vH}{\mathbf{H}}
+\newcommand{\vI}{\mathbf{I}}
+\newcommand{\vJ}{\mathbf{J}}
+\newcommand{\vK}{\mathbf{K}}
+\newcommand{\vL}{\mathbf{L}}
+\newcommand{\vM}{\mathbf{M}}
+\newcommand{\vN}{\mathbf{N}}
+\newcommand{\vO}{\mathbf{O}}
+\newcommand{\vP}{\mathbf{P}}
+\newcommand{\vQ}{\mathbf{Q}}
+\newcommand{\vR}{\mathbf{R}}
+\newcommand{\vS}{\mathbf{S}}
+\newcommand{\vT}{\mathbf{T}}
+\newcommand{\vU}{\mathbf{U}}
+\newcommand{\vV}{\mathbf{V}}
+\newcommand{\vW}{\mathbf{W}}
+\newcommand{\vX}{\mathbf{X}}
+\newcommand{\vY}{\mathbf{Y}}
+\newcommand{\vZ}{\mathbf{Z}}
+\newcommand{\vzero}{\mathbf{0}}
+\newcommand{\valpha}{\bm{\alpha}}
+\newcommand{\vbeta}{\bm{\beta}}
+\newcommand{\vgamma}{\bm{\gamma}}
+\newcommand{\vtau}{\bm{\tau}}
+
+% Brackets
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\lrabs}[1]{\left| #1 \right|}
+\newcommand{\nums}[1]{\{#1\}}
+% \newcommand{\setenu}[2]{\{#1,\dots,#2\}}
+\newcommand{\lrang}[1]{\langle #1\rangle}
+\newcommand{\lrfloor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lrceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Bigbr}[2]{\begin{cases}#1\\#2\end{cases}}
+
+% Forced upright brackets (pppppass)
+% Note that this is especially useful in kaiti paragraphs
+\newcommand{\nrbr}[1]{{\normalfont(}{#1}{\normalfont)}}
+\newcommand{\nsbr}[1]{{\normalfont[}{#1}{\normalfont]}}
+
+% Matrix
+\newcommand{\bmat}[2]{{\begin{bmatrix} #1 \end{bmatrix}}} % | |
+\newcommand{\vmat}[1]{{\begin{vmatrix} #1 \end{vmatrix}}} % [ ]
+
+% Differential operators
+\newcommand{\diff}{\,\mathrm{d}}
+\newcommand{\ddx}[1][]{\dfrac{\diff #1}{\diff x}}
+\newcommand{\ddxs}[1][]{\dfrac{\diff^2 #1}{\diff x^2}}
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\dfrac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pddxy}[3]{\dfrac{\partial^2 #1}{\partial #2\partial #3}}
+\newcommand{\pddd}[4]{\dfrac{\partial^#1 #2}{\partial #3\partial #4}}
+
+% Miscellaneous commands
+\newcommand{\eps}{\varepsilon}
+\newcommand{\degree}{^{\circ}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\kk}{\mathrm{k}}
+\newcommand{\disp}{\displaystyle}
+\newcommand{\mmid}{\enspace\Big|\enspace}
+% \newcommand{\delx}{\Delta x}
+\newcommand{\T}{\mathrm{T}} % transpose
+\newcommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\ol}[1]{\mathop{\overline{#1}}}
+
+% Math operators
+%% Common use
+% \DeclareMathOperator{\exp}{\mathrm{exp}}
+\DeclareMathOperator{\sgn}{\mathrm{sgn}}
+%% Analysis
+\DeclareMathOperator{\grad}{\mathrm{grad}}
+\DeclareMathOperator{\rot}{\mathrm{rot}}
+\DeclareMathOperator{\opdiv}{\mathrm{div}}
+%% Linear Algebra
+\DeclareMathOperator{\opdim}{\mathrm{dim}}
+\DeclareMathOperator{\oprank}{\mathrm{rank}}
+\DeclareMathOperator{\opspan}{\mathrm{Span}}
+\DeclareMathOperator{\opcol}{\mathrm{Col}}
+\DeclareMathOperator{\opnul}{\mathrm{Nul}}
+\DeclareMathOperator{\oprow}{\mathrm{Row}}
+\DeclareMathOperator{\optv}{\mathrm{TVar}}
+\DeclareMathOperator{\optr}{\mathrm{tr}}
+\DeclareMathOperator{\opker}{\mathrm{Ker}}
+\DeclareMathOperator{\opaff}{\mathrm{aff}}
+\DeclareMathOperator{\opconv}{\mathrm{conv}}
+\DeclareMathOperator{\opproj}{\mathrm{proj}}
+%% Probability
+\newcommand{\pr}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\prc}[2]{\mathbb{P}\left(#1\mid #2\right)}
+\newcommand{\E}[1]{\mathbb{E}\left(#1\right)}
+\newcommand{\Var}[1]{\mathbb{D}\left(#1\right)}
+\newcommand{\Cov}[1]{\mathrm{Cov}\left(#1\right)}
+
+% Huge operators
+%% Summation
+\newcommand{\ssum}[1]{\displaystyle\sum_{n=1}^{\infty}#1}
+\newcommand{\ssumz}[1]{\displaystyle\sum_{n=0}^{\infty}#1}
+\newcommand{\ssumk}[1]{\displaystyle\sum_{k=1}^{\infty}#1}
+\newcommand{\ssumkn}[1]{\displaystyle\sum_{k=1}^{n}#1}
+%% Limits
+\newcommand{\limtoinf}[1]{\displaystyle\lim_{n\to\infty}#1}
+\newcommand{\limxy}[3]{\displaystyle\lim_{\substack{x\to #1\\y\to #2}}#3}
+%% Integration
+\newcommand{\intab}[3]{\displaystyle\int_{#1}^{#2}{#3}\,\diff x}
+\newcommand{\intabu}[4]{\displaystyle\int_{#1}^{#2}{#3}\,\diff #4}
+\newcommand{\intint}[5]{\displaystyle\int_{-\infty}^{#1}\int_{-\infty}^{#2}#3\,\diff #4\,\diff #5}
+\newcommand{\intinf}[2][x]{\displaystyle\int_{-\infty}^{+\infty}#2\diff #1}
+\newcommand{\dnf}[1]{f^{(#1)}}
+\newcommand{\surfaceint}[4]{\displaystyle\iint_{#1}{#2}\diff y\diff z+{#3}\diff z\diff x+{#4}\diff x\diff y}
+
+% Localization words (pppppass)
+\ifdefined\chhzhdef@english%
+\newcommand{\thmdefinitionnamethm}{Definition}%
+\newcommand{\thmconceptnamethm}{Concept}%
+\newcommand{\thmnotationnamethm}{Notation}%
+\newcommand{\thmpropertynamethm}{Property}%
+\newcommand{\thmexamplenamethm}{Example}%
+\newcommand{\thmquestionnamethm}{Question}%
+\newcommand{\thmtheoremnamethm}{Theorem}%
+\newcommand{\thmpropositionthm}{Proposition}
+\newcommand{\thmlemmanamethm}{Lemma}%
+\newcommand{\thmcorollarynamethm}{Corollary}%
+\newcommand{\thmnonumcorollarynamethm}{Corollary}%
+\newcommand{\thmalgorithmnamethm}{Algorithm}%
+\newcommand{\thmproofnamethm}{Proof}%
+\newcommand{\thmanswernamethm}{Answer}%
+\newcommand{\thmremarknamethm}{Remark}%
+\newcommand{\thmabstractnamethm}{Abstract}%
+\newcommand{\thmanalysisnamethm}{Analysis}%
+\newcommand{\thmexercisenamethm}{Exercise}%
+\else%
+\newcommand{\thmdefinitionnamethm}{定义}%
+\newcommand{\thmconceptnamethm}{概念}%
+\newcommand{\thmnotationnamethm}{记号}%
+\newcommand{\thmpropertynamethm}{性质}%
+\newcommand{\thmexamplenamethm}{例}%
+\newcommand{\thmquestionnamethm}{问题}%
+\newcommand{\thmtheoremnamethm}{定理}%
+\newcommand{\thmpropositionthm}{命题}%
+\newcommand{\thmlemmanamethm}{引理}%
+\newcommand{\thmcorollarynamethm}{推论}%
+\newcommand{\thmnonumcorollarynamethm}{推论}%
+\newcommand{\thmalgorithmnamethm}{算法}%
+\newcommand{\thmproofnamethm}{证明}%
+\newcommand{\thmanswernamethm}{解答}%
+\newcommand{\thmremarknamethm}{注}%
+\newcommand{\thmabstractnamethm}{摘要}%
+\newcommand{\thmanalysisnamethm}{分析}%
+\newcommand{\thmexercisenamethm}{练习}%
+\fi%
+
+\ifdefined\chhzhdef@slide%
+{%
+\theoremstyle{plain}%
+\newtheorem{exercise}{练习}%
+}%
+\else%
+{%
+\theoremstyle{plain}%
+\newtheorem{definition}{\thmdefinitionnamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{concept}{\thmconceptnamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{notation}{\thmnotationnamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{property}{\thmpropertynamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{example}{\thmexamplenamethm}%
+}%
+\theoremstyle{plain}%
+\newtheorem{question}{\thmquestionnamethm}%
+{%
+\theoremstyle{plain}%
+\newtheorem{theorem}{\thmtheoremnamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{proposition}{\thmpropositionthm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{lemma}{\thmlemmanamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{corollary}{\thmcorollarynamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem*{corollary2}{\thmnonumcorollarynamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem{myalgorithm}{\thmalgorithmnamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem*{myproof}{\thmproofnamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem*{answer}{\thmanswernamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem*{remark}{\thmremarknamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem*{myabstract}{\thmabstractnamethm}%
+}%
+{%
+\theoremstyle{plain}%
+\newtheorem*{analysis}{\thmanalysisnamethm}%
+}%
+{%
+\theoremstyle{plain}
+\newtheorem{exercise}{\thmexercisenamethm}%
+}%
+\fi
+
+% Enumerate environment (pppppass)
+\newenvironment{partlist}[1][]%
+	{\begin{enumerate}[itemsep=0pt, label={\normalfont(}\alph*{\normalfont)}, wide, labelindent=\parindent, listparindent=\parindent, #1]}%
+	{\end{enumerate}}%
