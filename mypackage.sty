@@ -14,7 +14,7 @@
 \DeclareOption{english}{\def\chhzhdef@english{\relax}}
 \DeclareOption{slide}{\def\chhzhdef@slide{\relax}}
 \DeclareOption{listings}{\def\chhzhdef@listings{\relax}}
-\DeclareOption{cplusplus}{\def\chhzhdef@cplusplus{\relax}}
+\DeclareOption{cpp}{\def\chhzhdef@cpp{\relax}}
 \DeclareOption{bigstrut}{\def\chhzhdef@bigstrut{\relax}}
 
 % Process options
@@ -52,7 +52,7 @@
 	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }%
 \fi
-\ifdefined\chhzhdef@cplusplus%
+\ifdefined\chhzhdef@cpp%
 \RequirePackage{listings}%
 \lstset{%
 	language=c++,%
@@ -84,6 +84,7 @@
 \RequirePackage{bm}
 \RequirePackage{yhmath} % wideparen, widehat
 \RequirePackage{esint} % underset, oiint
+\RequirePackage{pifont} % tick, cross, ref: https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
 
 % Sets
 \newcommand{\nn}{\mathbb{N}}
@@ -198,6 +199,8 @@
 \newcommand{\T}{\mathrm{T}} % transpose
 \newcommand{\arc}[1]{\wideparen{#1}}
 \newcommand{\ol}[1]{\mathop{\overline{#1}}}
+\newcommand{\cmark}{\ding{51}} % tick
+\newcommand{\xmark}{\ding{55}} % cross x
 
 % Math operators
 %% Common use
