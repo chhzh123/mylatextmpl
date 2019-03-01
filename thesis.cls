@@ -13,6 +13,7 @@
 % Declaration of options
 \DeclareOption{thesis}{\def\note@thesis{\relax}}
 \DeclareOption{report}{\def\note@report{\relax}}
+\DeclareOption{reportComp}{\def\note@reportComp{\relax}} % Compact
 \DeclareOption{logo}{\def\note@logo{\relax}}
 \ProcessOptions\relax
 
@@ -206,7 +207,69 @@
 \captionsetup[figure]{font=small}
 \captionsetup[table]{font=small}
 \titleformat{\section}{\xiaosi\bfseries}{\chinese{section}、 }{0em}{}
-\titlespacing*{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}[0pt]
+\titleformat{\subsection}{\wuhao\bfseries}{\arabic{subsection}.~~}{0em}{}
+\titleformat{\subsubsection}{\wuhao\bfseries}{(\roman{subsubsection})~~}{0em}{}
+\titlespacing*{\section}{0pt}{0.1\baselineskip}{0.1\baselineskip}[0pt]
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}[0pt]
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}[0pt]
+
+\newcommand{\kongge}{\hspace*{1em}}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+
+\setlength{\parindent}{2em}
+\linespread{1.2}
+
+\AtBeginDocument{\songti\wuhao}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%  report  %%%%%%%%%%%%%%%%%%%%%
+\ifdefined\note@reportComp
+\let\chhzhnote@school\@empty
+\let\chhzhnote@authorremark\@empty
+\renewcommand\title[1]{\def\chhzhnote@title{#1}}
+\newcommand\subtitle[1]{\def\chhzhnote@subtitle{#1}}
+\renewcommand\author[1]{\def\chhzhnote@author{#1}}
+\newcommand\school[1]{\def\chhzhnote@school{#1}}
+\newcommand\classname[1]{\def\chhzhnote@classname{#1}}
+\newcommand\stunum[1]{\def\chhzhnote@stunum{#1}}
+\newcommand\headercontext[1]{\def\chhzhnote@headercontext{#1}}
+
+\RequirePackage{setspace}
+\RequirePackage{fancyhdr}
+\RequirePackage{afterpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\xiaowu\color{gray}{\chhzhnote@headercontext}}
+
+\makeatletter
+\def\@maketitle{%
+	{\ifdefined\note@logo\raggedright\includegraphics[width=0.2\linewidth]{SYSU.png}~\\[2cm]\else\@empty\fi}%
+	\vspace{-90pt}
+	\begin{center}%
+	{\heiti\xiaoer\chhzhnote@title}%
+	\vskip 10pt%
+	{\heiti\xiaosan\chhzhnote@subtitle}%
+	\vskip 1pt%
+	{\ifx\chhzhnote@school\@empty\else\kaishu\xiaowu\chhzhnote@school\fi%
+	\ifx\chhzhnote@classname\@empty\else\kaishu\xiaowu\quad\chhzhnote@classname\fi%
+	}%
+	\vspace{-1pt}
+	{\\\kaishu\wuhao\chhzhnote@stunum\quad\chhzhnote@author}%
+	\end{center}%
+}
+\makeatother
+
+\RequirePackage{caption}
+\RequirePackage{indentfirst}
+\captionsetup[figure]{font=small}
+\captionsetup[table]{font=small}
+\titleformat{\section}{\xiaosi\bfseries}{\chinese{section}、 }{0em}{}
+\titleformat{\subsection}{\wuhao\bfseries}{\arabic{subsection}.~~}{0em}{}
+\titleformat{\subsubsection}{\wuhao\bfseries}{(\roman{subsubsection})~~}{0em}{}
+\titlespacing*{\section}{0pt}{0.1\baselineskip}{0.1\baselineskip}[0pt]
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}[0pt]
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}[0pt]
 
 \newcommand{\kongge}{\hspace*{1em}}
 \setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
