@@ -15,7 +15,8 @@
 \DeclareOption{slide}{\def\chhzhdef@slide{\relax}}
 \DeclareOption{listings}{\def\chhzhdef@listings{\relax}}
 \DeclareOption{cpp}{\def\chhzhdef@cpp{\relax}}
-\DeclareOption{bigstrut}{\def\chhzhdef@bigstrut{\relax}}
+\DeclareOption{pseudo}{\def\chhzhdef@pseudo{\relax}}
+\DeclareOption{table}{\def\chhzhdef@table{\relax}}
 
 % Process options
 \ProcessOptions\relax
@@ -74,8 +75,16 @@
 % 	numberstyle=\bahao\ttfamily,
 % 	numbersep=9pt,
 
-\ifdefined\chhzhdef@bigstrut
+\ifdefined\chhzhdef@table
 \RequirePackage{bigstrut}
+\RequirePackage{multirow}
+\RequirePackage{multicol}
+\fi
+
+\ifdefined\chhzhdef@pseudo
+\RequirePackage{algorithm}
+% \RequirePackage{algorithmic}
+\RequirePackage[noend]{algpseudocode}
 \fi
 
 % Miscellaneous packages
