@@ -1,6 +1,6 @@
 % !TeX encoding = UTF-8
 
-%% chhzh123's personal macro package v0.1 2019/01/17
+%% chhzh123's personal macro package v1.0 2019/03
 %
 %% mypackage.sty
 %
@@ -15,8 +15,10 @@
 \DeclareOption{slide}{\def\chhzhdef@slide{\relax}}
 \DeclareOption{listings}{\def\chhzhdef@listings{\relax}}
 \DeclareOption{cpp}{\def\chhzhdef@cpp{\relax}}
+\DeclareOption{linenum}{\def\chhzhdef@linenum{\relax}}
 \DeclareOption{pseudo}{\def\chhzhdef@pseudo{\relax}}
 \DeclareOption{table}{\def\chhzhdef@table{\relax}}
+\DeclareOption{xelatex}{\def\chhzhdef@xelatex{\relax}}
 
 % Process options
 \ProcessOptions\relax
@@ -29,7 +31,6 @@
 \RequirePackage{amsxtra}
 \RequirePackage{mathtools}
 \RequirePackage{etoolbox}
-% \RequirePackage{ntheorem}
 
 % Figures
 \RequirePackage{tikz}
@@ -65,15 +66,21 @@
 	showstringspaces=false,
 	frame=single,
 	escapechar=`,
+	escapeinside=`',
 	breaklines=true,
 	tabsize=4,
 	showtabs=false,
 	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }%
 \fi
-% 	numbers=left,
-% 	numberstyle=\bahao\ttfamily,
-% 	numbersep=9pt,
+\ifdefined\chhzhdef@linenum
+\lstset{%
+	numbers=left,
+	stepnumber=1,
+	numbersep=9pt,
+	numberstyle=\scriptsize\color{gray}
+}%
+\fi
 
 \ifdefined\chhzhdef@table
 \RequirePackage{bigstrut}
@@ -88,9 +95,9 @@
 \fi
 
 % Miscellaneous packages
-% \RequirePackage{gensymb}
 \RequirePackage{extarrows}
 \RequirePackage{bm}
+\RequirePackage{bbm}
 \RequirePackage{yhmath} % wideparen, widehat
 \RequirePackage{esint} % underset, oiint
 \RequirePackage{pifont} % tick, cross, ref: https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
@@ -189,6 +196,7 @@
 \newcommand{\vY}{\mathbf{Y}}
 \newcommand{\vZ}{\mathbf{Z}}
 \newcommand{\vzero}{\mathbf{0}}
+\newcommand{\vone}{\mathbbm{1}}
 \newcommand{\valpha}{\bm{\alpha}}
 \newcommand{\vbeta}{\bm{\beta}}
 \newcommand{\vgamma}{\bm{\gamma}}
@@ -198,6 +206,7 @@
 \newcommand{\lrp}[1]{\left( #1 \right)}
 \newcommand{\lrabs}[1]{\left| #1 \right|}
 \newcommand{\nums}[1]{\{#1\}}
+\newcommand{\lrb}[1]{\{#1\}}
 % \newcommand{\setenu}[2]{\{#1,\dots,#2\}}
 \newcommand{\lrang}[1]{\langle #1\rangle}
 \newcommand{\lrfloor}[1]{\left\lfloor #1 \right\rfloor}
@@ -232,7 +241,10 @@
 \newcommand{\disp}{\displaystyle}
 \newcommand{\mmid}{\enspace\Big|\enspace}
 % \newcommand{\delx}{\Delta x}
+\ifdefined\chhzhdef@xelatex
+\else
 \newcommand{\T}{\mathrm{T}} % transpose
+\fi
 \newcommand{\arc}[1]{\wideparen{#1}}
 \newcommand{\ol}[1]{\mathop{\overline{#1}}}
 \newcommand{\cmark}{\ding{51}} % tick
@@ -242,6 +254,7 @@
 %% Common use
 % \DeclareMathOperator{\exp}{\mathrm{exp}}
 \DeclareMathOperator{\sgn}{\mathrm{sgn}}
+\DeclareMathOperator{\dom}{\mathrm{dom}}
 %% Analysis
 \DeclareMathOperator{\grad}{\mathrm{grad}}
 \DeclareMathOperator{\rot}{\mathrm{rot}}
@@ -259,6 +272,7 @@
 \DeclareMathOperator{\opaff}{\mathrm{aff}}
 \DeclareMathOperator{\opconv}{\mathrm{conv}}
 \DeclareMathOperator{\opproj}{\mathrm{proj}}
+\DeclareMathOperator{\opdiag}{\mathrm{diag}}
 %% Probability
 \newcommand{\pr}[1]{\mathbb{P}\left(#1\right)}
 \newcommand{\prc}[2]{\mathbb{P}\left(#1\mid #2\right)}

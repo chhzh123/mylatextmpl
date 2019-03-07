@@ -1,6 +1,6 @@
 % !TeX encoding = UTF-8
 
-%% chhzh123's thesis class v0.1 2019/01/17
+%% chhzh123's thesis class v1.0 2019/03
 %
 %% thesis.cls
 %
@@ -156,13 +156,11 @@
 %%%%%%%%%%%%%%%%%%%%  report  %%%%%%%%%%%%%%%%%%%%%
 \ifdefined\note@report
 \let\chhzhnote@school\@empty
-\let\chhzhnote@authorremark\@empty
 \renewcommand\title[1]{\def\chhzhnote@title{#1}}
 \renewcommand\author[1]{\def\chhzhnote@author{#1}}
 \newcommand\school[1]{\def\chhzhnote@school{#1}}
 \newcommand\classname[1]{\def\chhzhnote@classname{#1}}
 \newcommand\stunum[1]{\def\chhzhnote@stunum{#1}}
-\newcommand\authorremark[1]{\def\chhzhnote@authorremark{#1}}
 \newcommand\headercontext[1]{\def\chhzhnote@headercontext{#1}}
 
 \RequirePackage{setspace}
@@ -223,7 +221,7 @@
 \AtBeginDocument{\songti\wuhao}
 \fi
 
-%%%%%%%%%%%%%%%%%%%%  report  %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%  reportComp  %%%%%%%%%%%%%%%%%%%%%
 \ifdefined\note@reportComp
 \let\chhzhnote@school\@empty
 \let\chhzhnote@authorremark\@empty
@@ -234,6 +232,10 @@
 \newcommand\classname[1]{\def\chhzhnote@classname{#1}}
 \newcommand\stunum[1]{\def\chhzhnote@stunum{#1}}
 \newcommand\headercontext[1]{\def\chhzhnote@headercontext{#1}}
+\newcommand\authorremark[1]{\def\chhzhnote@authorremark{#1}}
+
+\newdateformat{builddate}{\THEYEAR年\THEMONTH月\THEDAY日}
+\def\appendixconfig{\titleformat{\section}{\xiaosi\bfseries}{\appendixname~\thesection .}{0em}{}}
 
 \RequirePackage{setspace}
 \RequirePackage{fancyhdr}
@@ -255,7 +257,8 @@
 	\ifx\chhzhnote@classname\@empty\else\kaishu\xiaowu\quad\chhzhnote@classname\fi%
 	}%
 	\vspace{-1pt}
-	{\\\kaishu\wuhao\chhzhnote@stunum\quad\chhzhnote@author}%
+	{\\\kaishu\wuhao\chhzhnote@stunum\quad\chhzhnote@author%
+	\ifx\chhzhnote@authorremark\@empty\else\thanks{\chhzhnote@authorremark}\fi}%
 	\end{center}%
 }
 \makeatother
