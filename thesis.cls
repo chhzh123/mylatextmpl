@@ -14,6 +14,7 @@
 \DeclareOption{thesis}{\def\note@thesis{\relax}}
 \DeclareOption{report}{\def\note@report{\relax}}
 \DeclareOption{reportComp}{\def\note@reportComp{\relax}} % Compact
+\DeclareOption{english}{\def\note@english{\relax}}
 \DeclareOption{logo}{\def\note@logo{\relax}}
 \ProcessOptions\relax
 
@@ -24,7 +25,7 @@
 
 % Load class
 \ifdefined\note@english%
-\LoadClass[UTF8, 11pt]{article}%
+\LoadClass[11pt]{article}%
 \else%
 \LoadClass[UTF8, 11pt]{ctexart}%
 \fi
@@ -49,12 +50,16 @@
 \RequirePackage{multirow}
 \RequirePackage{float}
 \RequirePackage[hyphens]{url}
+\ifdefined\note@english
+\RequirePackage{hyperref}
+\else
 \RequirePackage[unicode=true,
 	colorlinks,
 	linkcolor=black,
 	anchorcolor=black,
 	citecolor=black,
 	CJKbookmarks=false]{hyperref}
+\fi
 \RequirePackage{datetime}
 
 % Enumerate
@@ -66,6 +71,12 @@
 % \allowdisplaybreaks
 
 % Chinese fonts
+\ifdefined\note@english%
+% \tiny\scriptsize\footnotesize
+% \small\normalsize
+% \large\Large\LARGE
+% \huge\Huge
+\else%
 \newcommand{\chuhao}{\fontsize{42.2pt}{\baselineskip}\selectfont}%
 \newcommand{\xiaochu}{\fontsize{36.1pt}{\baselineskip}\selectfont}%
 \newcommand{\yihao}{\fontsize{26.1pt}{\baselineskip}\selectfont}%
@@ -90,6 +101,7 @@
 \renewcommand{\fangsong}{\CJKfamily{zhfs}} % 仿宋
 \renewcommand{\lishu}{\CJKfamily{zhli}} % 隶书
 \renewcommand{\youyuan}{\CJKfamily{zhyou}} % 幼圆
+\fi
 
 %%%%%%%%%%%%%%%%%%%%  thesis  %%%%%%%%%%%%%%%%%%%%%
 \ifdefined\note@thesis
@@ -243,6 +255,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{\xiaowu\color{gray}{\chhzhnote@headercontext}}
+\fancyfoot[C]{\thepage}
 
 \makeatletter
 \def\@maketitle{%
@@ -282,4 +295,66 @@
 \linespread{1.2}
 
 \AtBeginDocument{\songti\wuhao}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%  english  %%%%%%%%%%%%%%%%%%%%%
+\ifdefined\note@english
+\let\chhzhnote@school\@empty
+\let\chhzhnote@authorremark\@empty
+\let\chhzhnote@classname\empty
+\renewcommand\title[1]{\def\chhzhnote@title{#1}}
+\renewcommand\author[1]{\def\chhzhnote@author{#1}}
+\newcommand\school[1]{\def\chhzhnote@school{#1}}
+\newcommand\classname[1]{\def\chhzhnote@classname{#1}}
+\newcommand\stunum[1]{\def\chhzhnote@stunum{#1}}
+\newcommand\headercontext[1]{\def\chhzhnote@headercontext{#1}}
+\newcommand\authorremark[1]{\def\chhzhnote@authorremark{#1}}
+
+\newdateformat{builddate}{\THEYEAR.\THEMONTH.\THEDAY}
+\def\appendixconfig{\titleformat{\section}{\scriptsize\bfseries}{\appendixname~\thesection .}{0em}{}}
+
+\RequirePackage{setspace}
+\RequirePackage{fancyhdr}
+\RequirePackage{afterpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\footnotesize\color{gray}{\chhzhnote@headercontext}}
+\fancyfoot[C]{\thepage}
+
+\makeatletter
+\def\@maketitle{%
+	{\ifdefined\note@logo\raggedright\includegraphics[width=0.2\linewidth]{SYSU.png}~\\[2cm]\else\@empty\fi}%
+	\vspace{-90pt}
+	\begin{center}%
+	{\LARGE\chhzhnote@title}%
+	\vskip 10pt
+	{\ifx\chhzhnote@school\@empty\else\small\chhzhnote@school\fi%
+	\ifx\chhzhnote@classname\@empty\else\small\quad\chhzhnote@classname\fi\\%
+	}%
+	\vspace{1pt}
+	{\normalsize\chhzhnote@stunum\quad\chhzhnote@author%
+	\ifx\chhzhnote@authorremark\@empty\else\thanks{\chhzhnote@authorremark}\fi}%
+	\end{center}%
+}
+\makeatother
+
+\RequirePackage{caption}
+\captionsetup[figure]{font=small}
+\captionsetup[table]{font=small}
+\titleformat{\section}{\Large\bfseries}{\arabic{section}.}{0em}{}
+\titleformat{\subsection}{\large\bfseries}{\arabic{section}.\arabic{subsection}.~~}{0em}{}
+\titleformat{\subsubsection}{\large\bfseries}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}~~}{0em}{}
+\titlespacing*{\section}{0pt}{0.1\baselineskip}{0.1\baselineskip}[0pt]
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}[0pt]
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}[0pt]
+
+\newcommand{\whitespace}{\hspace*{1em}}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+
+\RequirePackage{parskip} % for english
+\setlength{\parindent}{0em}
+\linespread{1.2}
+
+\AtBeginDocument{\normalsize}
 \fi
