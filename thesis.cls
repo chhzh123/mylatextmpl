@@ -15,6 +15,7 @@
 \DeclareOption{report}{\def\note@report{\relax}}
 \DeclareOption{reportComp}{\def\note@reportComp{\relax}} % Compact
 \DeclareOption{english}{\def\note@english{\relax}}
+\DeclareOption{bib}{\def\note@bib{\relax}}
 \DeclareOption{logo}{\def\note@logo{\relax}}
 \ProcessOptions\relax
 
@@ -61,11 +62,18 @@
 	CJKbookmarks=false]{hyperref}
 \fi
 \RequirePackage{datetime}
+\RequirePackage{cite}
 
 % Enumerate
 \RequirePackage{enumitem}
 \setenumerate[1]{itemsep=-1pt,topsep=3pt}
 \setitemize[1]{itemsep=-1pt,topsep=3pt}
+
+\ifdefined\note@bib
+\RequirePackage{natbib}
+\setlength{\bibsep}{0.1ex}
+\bibliographystyle{unsrt} % IEEEtran % plain
+\fi
 
 % Equation display
 % \allowdisplaybreaks
@@ -247,7 +255,7 @@
 \newcommand\authorremark[1]{\def\chhzhnote@authorremark{#1}}
 
 \newdateformat{builddate}{\THEYEAR年\THEMONTH月\THEDAY日}
-\def\appendixconfig{\titleformat{\section}{\xiaosi\bfseries}{\appendixname~\thesection .}{0em}{}}
+\def\appendixconfig{\titleformat{\section}{\xiaosi\bfseries}{\appendixname~\thesection .~~}{0em}{}}
 
 \RequirePackage{setspace}
 \RequirePackage{fancyhdr}
@@ -311,7 +319,7 @@
 \newcommand\authorremark[1]{\def\chhzhnote@authorremark{#1}}
 
 \newdateformat{builddate}{\THEYEAR.\THEMONTH.\THEDAY}
-\def\appendixconfig{\titleformat{\section}{\scriptsize\bfseries}{\appendixname~\thesection .}{0em}{}}
+\def\appendixconfig{\titleformat{\section}{\scriptsize\bfseries}{\appendixname~\thesection .~~}{0em}{}}
 
 \RequirePackage{setspace}
 \RequirePackage{fancyhdr}

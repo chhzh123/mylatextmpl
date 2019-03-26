@@ -18,6 +18,7 @@
 \DeclareOption{linenum}{\def\chhzhdef@linenum{\relax}}
 \DeclareOption{pseudo}{\def\chhzhdef@pseudo{\relax}}
 \DeclareOption{table}{\def\chhzhdef@table{\relax}}
+\DeclareOption{optidef}{\def\chhzhdef@optidef{\relax}}
 \DeclareOption{xelatex}{\def\chhzhdef@xelatex{\relax}}
 
 % Process options
@@ -94,6 +95,10 @@
 \RequirePackage{algorithm}
 % \RequirePackage{algorithmic}
 \RequirePackage[noend]{algpseudocode}
+\fi
+
+\ifdefined\chhzhdef@optidef
+\RequirePackage[short,nocomma]{optidef}
 \fi
 
 % Miscellaneous packages
@@ -204,6 +209,8 @@
 \newcommand{\vgamma}{\bm{\gamma}}
 \newcommand{\vtau}{\bm{\tau}}
 
+% Norms
+\newcommand{\norm}[1]{\left\| #1 \right\|}
 % Brackets
 \newcommand{\lrp}[1]{\left( #1 \right)}
 \newcommand{\lrabs}[1]{\left| #1 \right|}
@@ -252,6 +259,9 @@
 \newcommand{\cmark}{\ding{51}} % tick
 \newcommand{\xmark}{\ding{55}} % cross x
 
+% Quantumn computing
+\newcommand{\qb}[1]{|#1\rangle}
+
 % Math operators
 %% Common use
 % \DeclareMathOperator{\exp}{\mathrm{exp}}
@@ -281,6 +291,8 @@
 \newcommand{\E}[1]{\mathbb{E}\left(#1\right)}
 \newcommand{\Var}[1]{\mathbb{D}\left(#1\right)}
 \newcommand{\Cov}[1]{\mathrm{Cov}\left(#1\right)}
+% Convex Optimization
+\newcommand{\st}{\text{s.t.}}
 
 % Huge operators
 %% Summation
