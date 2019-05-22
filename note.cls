@@ -34,6 +34,7 @@
 \RequirePackage{setspace}
 \RequirePackage{titlesec}
 \RequirePackage{titling}
+\RequirePackage{caption}
 
 % Page style
 \pagestyle{plain}

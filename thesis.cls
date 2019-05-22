@@ -120,6 +120,11 @@
 \newcommand\school[1]{\def\chhzhnote@school{#1}}
 \newcommand\authorremark[1]{\def\chhzhnote@authorremark{#1}}
 
+\newenvironment{abstractchinese}{\heiti{摘\kongge 要~~}\fangsong}{\par}
+\newenvironment{keywordchinese}{\heiti{关键词~~}\fangsong~}{\par}
+\newenvironment{abstractenglish}{\textbf{Abstract: }}{\par}
+\newenvironment{keywordenglish}{\textbf{Keywords: }}{\par}
+
 \makeatletter
 \def\@maketitle{%
 	\vspace{20pt}%
@@ -151,7 +156,7 @@
 \setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
 
 \setlength{\parindent}{2em}
-\linespread{1.2}
+\linespread{1.1}
 
 \RequirePackage{setspace}
 \let\oldthebibliography\thebibliography
@@ -319,7 +324,8 @@
 \newcommand\authorremark[1]{\def\chhzhnote@authorremark{#1}}
 
 \newdateformat{builddate}{\THEYEAR.\THEMONTH.\THEDAY}
-\def\appendixconfig{\titleformat{\section}{\scriptsize\bfseries}{\appendixname~\thesection .~~}{0em}{}}
+\def\appendixconfig{\titleformat{\section}{\Large\bfseries}{\appendixname~\thesection .~~}{0em}{}}
+% usage: \appendix\appendixconfig
 
 \RequirePackage{setspace}
 \RequirePackage{fancyhdr}
