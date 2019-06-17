@@ -108,6 +108,8 @@
 \RequirePackage{yhmath} % wideparen, widehat
 \RequirePackage{esint} % underset, oiint
 \RequirePackage{pifont} % tick, cross, ref: https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+\RequirePackage{cases} % multiple cases labeling
+\RequirePackage{subeqnarray}
 
 % Sets
 \newcommand{\nn}{\mathbb{N}}
@@ -204,10 +206,11 @@
 \newcommand{\vY}{\mathbf{Y}}
 \newcommand{\vZ}{\mathbf{Z}}
 \newcommand{\vzero}{\mathbf{0}}
-\newcommand{\vone}{\mathbbm{1}}
+\newcommand{\vone}{\mathbf{1}}
 \newcommand{\valpha}{\bm{\alpha}}
 \newcommand{\vbeta}{\bm{\beta}}
 \newcommand{\vgamma}{\bm{\gamma}}
+\newcommand{\vlambda}{\bm{\lambda}}
 \newcommand{\vtau}{\bm{\tau}}
 
 % Norms
@@ -273,6 +276,8 @@
 \DeclareMathOperator{\grad}{\mathrm{grad}}
 \DeclareMathOperator{\rot}{\mathrm{rot}}
 \DeclareMathOperator{\opdiv}{\mathrm{div}}
+\DeclareMathOperator{\opint}{\mathrm{int}}
+\DeclareMathOperator{\oprelint}{\mathrm{relint}}
 %% Linear Algebra
 \DeclareMathOperator{\opdim}{\mathrm{dim}}
 \DeclareMathOperator{\oprank}{\mathrm{rank}}
@@ -287,6 +292,7 @@
 \DeclareMathOperator{\opconv}{\mathrm{conv}}
 \DeclareMathOperator{\opproj}{\mathrm{proj}}
 \DeclareMathOperator{\opdiag}{\mathrm{diag}}
+\DeclareMathOperator{\opcond}{\mathrm{cond}}
 %% Probability
 \newcommand{\pr}[1]{\mathbb{P}\left(#1\right)}
 \newcommand{\prc}[2]{\mathbb{P}\left(#1\mid #2\right)}
@@ -294,8 +300,13 @@
 \newcommand{\Var}[1]{\mathbb{D}\left(#1\right)}
 \newcommand{\Cov}[1]{\mathrm{Cov}\left(#1\right)}
 % Convex Optimization
-\newcommand{\st}{\text{s.t.}}
+\newcommand{\st}{\text{s.t.}\,}
 \newcommand{\iter}[2]{#1^{(#2)}}
+\DeclareMathOperator{\opprox}{\mathrm{prox}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\arginf}{arg\,inf}
+\DeclareMathOperator*{\argsup}{arg\,sup}
 
 % Huge operators
 %% Summation
