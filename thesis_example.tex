@@ -1,0 +1,51 @@
+\documentclass[thesis]{thesis}
+\usepackage{mypackage}
+
+\title{\LaTeX中文报告}
+\author{佚名}
+\school{（XXX学院，XXX专业，学号）}
+\authorremark{Email: \url{xxx@mail.edu.cn}}
+
+% \linespread{1.15}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstractchinese}
+这是\LaTeX论文的中文测试摘要。句子要长长长长长长长非常长，以便展示多行间距。
+\end{abstractchinese}
+
+\begin{keywordchinese}
+\LaTeX文档，中文论文
+\end{keywordchinese}
+
+% \xiaosi
+
+这是测试文档内容，默认为五号宋体，行间距为单倍行距。
+如果需要改为小四宋体，可以直接在文档前面添加\verb'\xiaosi'来修改字号。
+如果需要修改行间距，则修改文档引言区的\verb'\linespread'参数。
+
+下面是测试引用，参考文献内容应符合中文文献规范，如期刊\cite{journal}、专著\cite{book}、论文集\cite{thesis}、报告\cite{report}、电子文献\cite{database,announcement}。
+
+
+\begin{thebibliography}{1}
+\bibitem{journal} 期刊作者. 题名[J]. 刊名. 出版年，卷(期): 起止页码.
+
+\bibitem{book} 专著作者. 书名[M]. 版次(第一版可略). 出版地: 出版社，出版年: 起止页码.
+
+\bibitem{thesis} 论文集作者. 题名[C]. 编者. 论文集名. 出版地: 出版社，出版年: 起止页码.
+
+\bibitem{report} 报告作者．题名[R]. 报告地: 报告会主办单位，年份.
+
+\bibitem{database} 电子文献作者. 题名[DB/OL]. 数据库，日期.
+
+\bibitem{announcement} 电子文献作者. 题名[EB/OL]. 网上电子公告，日期.
+
+\end{thebibliography}
+
+%% with reference.bib file
+% \bibliographystyle{unsrt}
+% \bibliography{reference}
+
+\end{document}

@@ -88,6 +88,7 @@
 \RequirePackage{multirow}
 \RequirePackage{multicol}
 \RequirePackage{booktabs} % itemize
+\RequirePackage{enumitem}
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 \fi
 
@@ -448,3 +449,10 @@
 \newenvironment{partlist}[1][]%
 	{\begin{enumerate}[itemsep=0pt, label={\normalfont(}\alph*{\normalfont)}, wide, labelindent=\parindent, listparindent=\parindent, #1]}%
 	{\end{enumerate}}%
+
+\newcommand{\myhline}{\par\noindent\rule[0.3\baselineskip]{\textwidth}{0.4pt}\par}
+\newenvironment{parttext}{\myhline}{\myhline}
+
+% Chinese text emphasis support
+\newcommand\textemph[1]{\textcolor{blue}{\textbf{#1}}}
+\newcommand\textred[1]{\textcolor{red}{\textbf{#1}}}
