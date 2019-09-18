@@ -307,6 +307,23 @@
 \setlength{\parindent}{2em}
 \linespread{1.2}
 
+\RequirePackage{setspace}
+\let\oldthebibliography\thebibliography
+\let\endoldthebibliography\endthebibliography
+\renewenvironment{thebibliography}[1]{
+\vskip 20pt
+\begin{spacing}{0.8}
+  \begin{oldthebibliography}{#1}
+  \vskip 10pt
+  	% \xiaowu
+    % \setlength{\itemsep}{0.1em}
+    % \setlength{\parskip}{0.1em}
+}
+{
+  \end{oldthebibliography}
+  \end{spacing}
+}
+
 \AtBeginDocument{\songti\wuhao}
 \fi
 

@@ -88,9 +88,16 @@
 \RequirePackage{multirow}
 \RequirePackage{multicol}
 \RequirePackage{booktabs} % itemize
-\RequirePackage{enumitem}
+\RequirePackage{colortbl}
+\RequirePackage{longtable}
+
+\ifdefined\chhzhdef@slide
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\else
+\RequirePackage{enumitem}
 \fi
+
+\fi % table
 
 \ifdefined\chhzhdef@pseudo
 \RequirePackage{algorithm}
@@ -213,6 +220,7 @@
 \newcommand{\vgamma}{\bm{\gamma}}
 \newcommand{\vlambda}{\bm{\lambda}}
 \newcommand{\vtau}{\bm{\tau}}
+\newcommand{\vmu}{\bm{\mu}}
 
 % Norms
 \newcommand{\norm}[1]{\left\| #1 \right\|}
@@ -424,7 +432,7 @@
 \newtheorem*{myproof}{\thmproofnamethm}%
 }%
 {%
-\theoremstyle{plain}%
+\theoremstyle{definition}%
 \newtheorem*{answer}{\thmanswernamethm}%
 }%
 {%
