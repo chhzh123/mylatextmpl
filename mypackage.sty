@@ -15,6 +15,8 @@
 \DeclareOption{slide}{\def\chhzhdef@slide{\relax}}
 \DeclareOption{listings}{\def\chhzhdef@listings{\relax}}
 \DeclareOption{cpp}{\def\chhzhdef@cpp{\relax}}
+\DeclareOption{python}{\def\chhzhdef@python{\relax}}
+\DeclareOption{javascript}{\def\chhzhdef@javascript{\relax}}
 \DeclareOption{linenum}{\def\chhzhdef@linenum{\relax}}
 \DeclareOption{pseudo}{\def\chhzhdef@pseudo{\relax}}
 \DeclareOption{table}{\def\chhzhdef@table{\relax}}
@@ -37,25 +39,10 @@
 \RequirePackage{tikz}
 \RequirePackage{tikz-cd}
 \RequirePackage{pgfplots}
+\RequirePackage{float}
+\RequirePackage{color}
 
 % Environments
-\ifdefined\chhzhdef@listings%
-\RequirePackage{listings}%
-\lstset{%
-	basicstyle=\ttfamily,%
-	keywordstyle=\ttfamily\color{blue!75!black},%
-	commentstyle=\ttfamily\color{green!75!black},%
-	stringstyle=\ttfamily\color{red!75!black},
-	flexiblecolumns,
-	showstringspaces=false,
-	frame=single,
-	breaklines=true,
-	tabsize=4,
-	showtabs=false,
-	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
-}%
-\fi
-\ifdefined\chhzhdef@cpp%
 \RequirePackage{listings}%
 \lstset{%
 	language=c++,%
@@ -73,6 +60,47 @@
 	showtabs=false,
 	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }%
+\ifdefined\chhzhdef@cpp%
+\lstset{language=c++}
+\fi
+\ifdefined\chhzhdef@python
+\lstset{language=python}
+\fi
+\ifdefined\chhzhdef@javascript
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
 \fi
 \ifdefined\chhzhdef@linenum
 \lstset{%
@@ -129,9 +157,30 @@
 % Be careful! These commands should be deprecated!
 \newcommand{\mC}{\mathbf{C}}
 \newcommand{\mH}{\mathbf{H}}
-\newcommand{\mL}{\mathcal{L}}
-\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
 \newcommand{\mD}{\mathcal{D}}
+\newcommand{\mE}{\mathcal{E}}
+\newcommand{\mF}{\mathcal{F}}
+\newcommand{\mG}{\mathcal{G}}
+\newcommand{\mI}{\mathcal{I}}
+\newcommand{\mJ}{\mathcal{J}}
+\newcommand{\mK}{\mathcal{K}}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\mM}{\mathcal{M}}
+\newcommand{\mN}{\mathcal{N}}
+\newcommand{\mO}{\mathcal{O}}
+\newcommand{\mP}{\mathcal{P}}
+\newcommand{\mQ}{\mathcal{Q}}
+\newcommand{\mR}{\mathcal{R}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mT}{\mathcal{T}}
+\newcommand{\mU}{\mathcal{U}}
+\newcommand{\mV}{\mathcal{V}}
+\newcommand{\mW}{\mathcal{W}}
+\newcommand{\mX}{\mathcal{X}}
+\newcommand{\mY}{\mathcal{Y}}
+\newcommand{\mZ}{\mathcal{Z}}
 % Canonical usage
 \newcommand{\sA}{\mathcal{A}}
 \newcommand{\sB}{\mathcal{B}}
@@ -219,6 +268,7 @@
 \newcommand{\vbeta}{\bm{\beta}}
 \newcommand{\vgamma}{\bm{\gamma}}
 \newcommand{\vlambda}{\bm{\lambda}}
+\newcommand{\vtheta}{\bm{\theta}}
 \newcommand{\vtau}{\bm{\tau}}
 \newcommand{\vmu}{\bm{\mu}}
 
@@ -316,6 +366,10 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\arginf}{arg\,inf}
 \DeclareMathOperator*{\argsup}{arg\,sup}
+% Signal Processing
+\DeclareMathOperator{\sinc}{\mathrm{sinc}}
+\DeclareMathOperator{\Real}{\mathrm{Re}}
+\DeclareMathOperator{\Imag}{\mathrm{Im}}
 
 % Huge operators
 %% Summation
