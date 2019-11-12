@@ -249,7 +249,10 @@
 %%%%%%%%%%%%%%%%%%%%  reportComp  %%%%%%%%%%%%%%%%%%%%%
 \ifdefined\note@reportComp
 \let\chhzhnote@school\@empty
+\let\chhzhnote@subtitle\@empty
 \let\chhzhnote@authorremark\@empty
+\let\chhzhnote@classname\@empty
+\let\chhzhnote@stunum\@empty
 \renewcommand\title[1]{\def\chhzhnote@title{#1}}
 \newcommand\subtitle[1]{\def\chhzhnote@subtitle{#1}}
 \renewcommand\author[1]{\def\chhzhnote@author{#1}}
@@ -276,14 +279,14 @@
 	\vspace{-90pt}
 	\begin{center}%
 	{\heiti\xiaoer\chhzhnote@title}%
-	\vskip 10pt%
-	{\heiti\xiaosan\chhzhnote@subtitle}%
+	{\ifx\chhzhnote@subtitle\@empty\else\vskip 10pt%
+	\heiti\xiaosan\chhzhnote@subtitle\fi}%
 	\vskip 1pt%
 	{\ifx\chhzhnote@school\@empty\else\kaishu\xiaowu\chhzhnote@school\fi%
-	\ifx\chhzhnote@classname\@empty\else\kaishu\xiaowu\quad\chhzhnote@classname\fi%
+	\ifx\chhzhnote@classname\@empty\else\kaishu\xiaowu\quad\chhzhnote@classname\\\fi%
 	}%
 	\vspace{-1pt}
-	{\\\kaishu\wuhao\chhzhnote@stunum\quad\chhzhnote@author%
+	{\kaishu\wuhao\ifx\chhzhnote@stunum\@empty\else\chhzhnote@stunum\quad\fi\chhzhnote@author%
 	\ifx\chhzhnote@authorremark\@empty\else\thanks{\chhzhnote@authorremark}\fi}%
 	\end{center}%
 }
