@@ -333,8 +333,9 @@
 %%%%%%%%%%%%%%%%%%%%  english  %%%%%%%%%%%%%%%%%%%%%
 \ifdefined\note@english
 \let\chhzhnote@school\@empty
+\let\chhzhnote@classname\@empty
+\let\chhzhnote@stunum\@empty
 \let\chhzhnote@authorremark\@empty
-\let\chhzhnote@classname\empty
 \renewcommand\title[1]{\def\chhzhnote@title{#1}}
 \renewcommand\author[1]{\def\chhzhnote@author{#1}}
 \newcommand\school[1]{\def\chhzhnote@school{#1}}
@@ -363,11 +364,13 @@
 	{\LARGE\chhzhnote@title}%
 	\vskip 10pt
 	{\ifx\chhzhnote@school\@empty\else\small\chhzhnote@school\fi%
-	\ifx\chhzhnote@classname\@empty\else\small\quad\chhzhnote@classname\fi\\%
+	\ifx\chhzhnote@classname\@empty\else\small\quad\chhzhnote@classname\\\fi%
 	}%
 	\vspace{1pt}
-	{\normalsize\chhzhnote@stunum\quad\chhzhnote@author%
+	{\ifx\chhzhnote@stunum\@empty\else\normalsize\chhzhnote@stunum\quad\fi\chhzhnote@author%
 	\ifx\chhzhnote@authorremark\@empty\else\thanks{\chhzhnote@authorremark}\fi}%
+	\\\vskip 3pt%
+	\@date
 	\end{center}%
 }
 \makeatother
@@ -375,8 +378,8 @@
 \RequirePackage{caption}
 \captionsetup[figure]{font=small}
 \captionsetup[table]{font=small}
-\titleformat{\section}{\Large\bfseries}{\arabic{section}.}{0em}{}
-\titleformat{\subsection}{\large\bfseries}{\arabic{section}.\arabic{subsection}.~~}{0em}{}
+\titleformat{\section}{\Large\bfseries}{\arabic{section}~~}{0em}{}
+\titleformat{\subsection}{\large\bfseries}{\arabic{section}.\arabic{subsection}~~}{0em}{}
 \titleformat{\subsubsection}{\large\bfseries}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}~~}{0em}{}
 \titlespacing*{\section}{0pt}{0.1\baselineskip}{0.1\baselineskip}[0pt]
 \titlespacing*{\subsection}{0pt}{0pt}{0pt}[0pt]
