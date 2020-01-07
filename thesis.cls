@@ -175,6 +175,8 @@
   \end{spacing}
 }
 
+\def\appendixconfig{\titleformat{\section}{\xiaosi\bfseries}{\appendixname~\thesection .~~}{0em}{}}
+
 \AtBeginDocument{\songti\wuhao}
 \fi
 
