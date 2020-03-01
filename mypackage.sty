@@ -40,10 +40,27 @@
 \RequirePackage{tikz-cd}
 \RequirePackage{pgfplots}
 \RequirePackage{float}
-\RequirePackage{color}
+\RequirePackage{xcolor}
 
 % Environments
 \RequirePackage{listings}%
+\ifdefined\chhzhdef@slide%
+\lstset{%
+	language=c++,%
+	basicstyle=\small\ttfamily,%
+	keywordstyle=\ttfamily\color{blue!75!black},%
+	commentstyle=\ttfamily\color{green!75!black},%
+	stringstyle=\ttfamily\color{red!75!black},
+	flexiblecolumns,
+	showstringspaces=false,
+	frame=single,
+	escapechar=`,
+	escapeinside=`',
+	breaklines=true,
+	tabsize=4,
+	showtabs=false,
+}%
+\else
 \lstset{%
 	language=c++,%
 	basicstyle=\small\ttfamily,%
@@ -60,6 +77,8 @@
 	showtabs=false,
 	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }%
+\fi
+
 \ifdefined\chhzhdef@cpp%
 \lstset{language=c++}
 \fi
@@ -435,7 +454,7 @@
 \ifdefined\chhzhdef@slide%
 {%
 \theoremstyle{plain}%
-\newtheorem{exercise}{练习}%
+\newtheorem{exercise}{\thmexercisenamethm}%
 }%
 \else%
 {%
