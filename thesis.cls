@@ -4,7 +4,7 @@
 %
 %% thesis.cls
 %
-%% Copyright 2018--2019 chhzh123
+%% Copyright 2018--2020 chhzh123
 
 % Identification
 \NeedsTeXFormat{LaTeX2e}

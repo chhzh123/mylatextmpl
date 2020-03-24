@@ -1,14 +1,14 @@
 % !TeX encoding = UTF-8
 
-%% chhzh123's personal macro package v1.0 2019/03
+%% chhzh123's personal macro package v2.0 2020/03
 %
 %% mypackage.sty
 %
-%% Copyright 2018--2019 chhzh123
+%% Copyright 2018--2020 chhzh123
 
 % Identification
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mypackage}[2019/01/17]
+\ProvidesPackage{mypackage}[2020/03/24]
 
 % Option declarations
 \DeclareOption{english}{\def\chhzhdef@english{\relax}}
@@ -105,21 +105,6 @@
   morestring=[b]"
 }
 
-% \lstset{
-%    language=JavaScript,
-%    backgroundcolor=\color{lightgray},
-%    extendedchars=true,
-%    basicstyle=\footnotesize\ttfamily,
-%    showstringspaces=false,
-%    showspaces=false,
-%    numbers=left,
-%    numberstyle=\footnotesize,
-%    numbersep=9pt,
-%    tabsize=2,
-%    breaklines=true,
-%    showtabs=false,
-%    captionpos=b
-% }
 \fi
 \ifdefined\chhzhdef@linenum
 \lstset{%
@@ -286,10 +271,28 @@
 \newcommand{\valpha}{\bm{\alpha}}
 \newcommand{\vbeta}{\bm{\beta}}
 \newcommand{\vgamma}{\bm{\gamma}}
-\newcommand{\vlambda}{\bm{\lambda}}
+\newcommand{\vdelta}{\bm{\delta}}
+\newcommand{\vepsilon}{\bm{\epsilon}}
+\newcommand{\veps}{\bm{\varepsilon}}
+\newcommand{\vzeta}{\bm{\zeta}}
+\newcommand{\veta}{\bm{\eta}}
 \newcommand{\vtheta}{\bm{\theta}}
-\newcommand{\vtau}{\bm{\tau}}
+\newcommand{\viota}{\bm{\iota}}
+\newcommand{\vkappa}{\bm{\kappa}}
+\newcommand{\vlambda}{\bm{\lambda}}
 \newcommand{\vmu}{\bm{\mu}}
+\newcommand{\vnu}{\bm{\nu}}
+\newcommand{\vxi}{\bm{\xi}}
+\newcommand{\vomicron}{\bm{\omicron}}
+\newcommand{\vpi}{\bm{\pi}}
+\newcommand{\vrho}{\bm{\rho}}
+\newcommand{\vsigma}{\bm{\sigma}}
+\newcommand{\vtau}{\bm{\tau}}
+\newcommand{\vupsilon}{\bm{\upsilon}}
+\newcommand{\vphi}{\bm{\phi}}
+\newcommand{\vchi}{\bm{\chi}}
+\newcommand{\vpsi}{\bm{\psi}}
+\newcommand{\vomega}{\bm{\omega}}
 
 % Norms
 \newcommand{\norm}[1]{\left\| #1 \right\|}
@@ -392,6 +395,12 @@
 \DeclareMathOperator{\sinc}{\mathrm{sinc}}
 \DeclareMathOperator{\Real}{\mathrm{Re}}
 \DeclareMathOperator{\Imag}{\mathrm{Im}}
+% Deep Learning
+\DeclareMathOperator{\softmax}{\mathrm{softmax}}
+\DeclareMathOperator{\relu}{\mathrm{ReLU}}
+\DeclareMathOperator{\sigmoid}{\mathrm{sigmoid}}
+\newcommand{\smp}[2]{{#1^{(#2)}}} % sample
+\newcommand{\layer}[2]{{#1^{[#2]}}}
 
 % Huge operators
 %% Summation

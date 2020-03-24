@@ -1,10 +1,10 @@
 % !TeX encoding = UTF-8
 
-%% chhzh123's note class v0.1 2019/01/17
+%% chhzh123's note class v1.0 2020/03
 %
 %% note.cls
 %
-%% Copyright 2018--2019 chhzh123
+%% Copyright 2018--2020 chhzh123
 
 % Identification
 \NeedsTeXFormat{LaTeX2e}
